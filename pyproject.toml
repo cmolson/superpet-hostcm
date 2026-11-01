@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "superpet-hostcm"
+dynamic = ["version"]
+description = "Host-side HOSTCM file server for the Commodore SuperPET (Waterloo microsystems)"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Christian Molson", email = "christian@cmolabs.org" }]
+requires-python = ">=3.8"
+dependencies = ["pyserial>=3.4"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX",
+    "Environment :: Console",
+    "Topic :: System :: Emulators",
+]
+
+[project.urls]
+Homepage = "https://github.com/cmolson/superpet-hostcm"
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+hostcm = "hostcm.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "hostcm.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]

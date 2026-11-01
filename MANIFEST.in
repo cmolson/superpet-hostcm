@@ -1,0 +1,2 @@
+include PROTOCOL.md
+recursive-include tests *.py
